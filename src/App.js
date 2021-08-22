@@ -1,24 +1,32 @@
-import logo from './logo.svg';
+import React, { useState } from 'react';
 import './App.css';
+import "react-datepicker/dist/react-datepicker.css";
+import AttendanceManagement from './attendaceManagement';
+import Reports from './reports';
+
+
 
 function App() {
+
+  const [isReports, setIsReports] = useState(false);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="container">
+      <div className="row mt-5">
+        <div className="col-md-12">
+          <button className="btn btn-primary" onClick={() => setIsReports(!isReports)}>
+            {isReports ? "Add Punch" : "Show Reports"}
+          </button>
+        </div>
+      </div>
+      <div className="row m-5">
+        <div className="col-md-6">
+          {isReports ? <Reports /> : <AttendanceManagement />}
+        </div>
+      </div>
     </div>
+
+
   );
 }
 
